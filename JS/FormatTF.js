@@ -48,7 +48,6 @@ function myReplace() {
     format(questoes);
 }
 
-
 function format(questoes) {
     var formated = '';
 

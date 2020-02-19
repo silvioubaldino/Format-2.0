@@ -1,0 +1,40 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    background-color: lightgray;
+    height: 100%;
+}
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+}
+.menu-principal, .cabecalho{
+    min-width: 400px;
+    text-align: center;
+}
+.cabecalho{
+    background: #333;
+    color: #fff;
+    border-bottom: solid 5px #f98000;
+    padding: 15px 0px;
+    margin: 0;
+}
+.menu-principal nav{
+    display: inline-block;
+    background-color: #fff;
+    min-width: 280px;
+}
+.menu-principal a{
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #f98000;
+    font-size: 1.5em;
+}
+.menu-principal a:hover{
+    background-color: rgba(79, 173, 219, .4);
+}

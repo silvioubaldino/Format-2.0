@@ -6,27 +6,32 @@
     <meta namehidden="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Format ME</title>
-
+    <link rel="stylesheet" href="../CSS/css.css">
 </head>
 
 <body>
-    <h1>Format Multipla escolha</h1>
+    <div class="conteudo">
+        <div class="format">
+            <h1 class="cabecalho">Format Multipla escolha</h1>
 
-    <div id="input">
-        <input type="number" id="questaoinicial" value="1">
-        <br>
-        <textarea id="namehidden" cols="100" rows="1">Nome oculto da questão</textarea>
-        <textarea id="nameviewed" cols="100" rows="1">Nome visto da questão</textarea>
-        <br>
-        <textarea id="questoes" cols="160" rows="20">Questões</textarea>
+            <div id="input">
+                <input type="number" id="questaoinicial" value="1">
+                <br>
+                <textarea id="namehidden" cols="100" rows="1">Nome oculto da questão</textarea>
+                <textarea id="nameviewed" cols="100" rows="1">Nome visto da questão</textarea>
+                <br>
+                <span>Questões: </span><br>
+                <textarea id="questoes" cols="160" rows="20"></textarea>
 
-        <button onclick=myReplace()>Format</button>
+                <button onclick=myReplace()>Format</button>
 
 
-    </div>
-    <div id="output">
-        <p id="formated"></p>
+            </div>
+            <div id="output">
+                <p id="formated"></p>
 
+            </div>
+        </div>
     </div>
     <script src="../JS/FormatME.js"></script>
 </body>
