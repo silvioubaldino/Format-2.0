@@ -16,24 +16,15 @@ function myReplace() {
 }
 
 function organizar(questaoinicial, titulo) {
-    var namehidden = `::
-    ${document.getElementById('namehidden').value} -
-        ${new Intl.NumberFormat('pt-BR',
-        { minimumIntegerDigits: questaoInicialStr.length })
-        .format(questaoinicial)}::`;
-    var nameviewed = `&lt;i&gt;(CESPE - 
-        ${document.getElementById('nameviewed').value} - Questão:
-        ${new Intl.NumberFormat('pt-BR',
-        { minimumIntegerDigits: questaoInicialStr.length })
-        .format(questaoinicial)})&lt;/i&gt;&lt;br&gt;`
+    var namehidden = `::${document.getElementById('namehidden').value} - ${new Intl.NumberFormat('pt-BR',{ minimumIntegerDigits: questaoInicialStr.length }).format(questaoinicial)}::`;
+    var nameviewed = `&lt;i&gt;(CESPE - ${document.getElementById('nameviewed').value} - Questão: ${new Intl.NumberFormat('pt-BR',{ minimumIntegerDigits: questaoInicialStr.length }).format(questaoinicial)})&lt;/i&gt;&lt;br&gt;`
 
-    return namehidden + '<br>'
-        + nameviewed + '<br>'
-        + titulo + '<br>'
+    return namehidden + '\n' + nameviewed + '\n' + titulo
 }
 
-var correct = []
+var correct
 function getCorrection() {
+    correct = []
     var correction = document.getElementById("correction").value
     correction = correction.split(/\n/g)
     for (var i = 0; i < correction.length; i++) {
@@ -72,31 +63,38 @@ function format(questoes) {
         var titulo = aux[0]
         let eachCorrect
         questaoinicial = questaoinicial + 1
-        formated = formated + organizar(questaoinicial, titulo) + '{<br>';
+        formated = formated + organizar(questaoinicial, titulo) + '{\n';
         eachCorrect = parseInt(correct.charAt(chrAt))
 
+        //if(eacheCorrect == null)
+            
         if (eachCorrect == 5) {
-            formated = formated + "ANULADA" + '<br>}<br><br>'
+            formated = formated + 'ANULADA\n\n}\n\n'
             chrAt++
         }else {
             for (let j = 0; j < aux.length - 1; j++) {
                 questaoatual = aux[j + 1]
                 if (j == eachCorrect) {
-                    formated = formated + "=" + questaoatual + "<br>";
+                    formated = formated + "=" + questaoatual;
                 }else {
-                    formated = formated + "~" + questaoatual + "<br>";
+                    formated = formated + "~" + questaoatual;
                 }
             }
-            formated = formated + '}<br><br>';
+            formated = formated + '}\n\n';
             chrAt++
         }
     }
+    formated = formated.replace(/[^:>\.{}\n]\n[^{]/g, (x) =>{
+        x = x.charAt(0) + ' ' + x.charAt(2)
+        return x
+    })
+
     document.getElementById("formated").innerHTML = formated;
 }
 
 function copyText() {
-    const textCopy = document.getElementById("formated").value;
-    textCopy.select();
+    let el = document.getElementById('formated')
+    el.select();
     document.execCommand('copy');
     alert('Texto copiado');
 }

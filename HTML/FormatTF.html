@@ -6,29 +6,53 @@
     <meta namehidden="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Format TF</title>
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 
 <body>
-    
-    <h1>Format True/False</h1>
-    
-    <div id="input">
-        <input type="number" id="questaoinicial" value="51">
-        <br>
-        <textarea id="namehidden" cols="100" rows="1">Nome oculto da questão</textarea>
-        <textarea id="nameviewed" cols="100" rows="1">Nome visto da questão</textarea>
-        <br>
-        <textarea id="questoes" cols="160" rows="20">Questões</textarea>
+    <div class="conteudo">
+        <div class="format">
+            <h1 class="cabecalho">Format True/False</h1>
 
-        <button onclick=myReplace()>Format</button>
+            <div id="input">
+                <div class="line">
+                    <span>Nome oculto da questão:</span>
+                    <input id="namehidden" cols="100" rows="1"></input>
 
+                    <span>Nome visto da questão:</span>
+                    <input id="nameviewed" cols="100" rows="1"></input>
+                </div>
 
-    </div>
-    <div id="output">
-        <p id="formated"></p>
+                <div class="numeroinicial">
+                    <span>Questão inicial:</span>
+                    <input type="number" id="questaoinicial" value="001">
+                    <hr>
+                </div>
 
-    </div>
-    <script src="..//JS/FormatTF.js"></script>
+                <div class="questions">
+                    <span>Questões: </span><br>
+                    <textarea id="questoes"></textarea>
+                    <br>
+                    <span>Gabarito: </span>
+                    <br>
+                    <textarea id="correction"></textarea>
+                </div>
+
+            </div>
+            <div class="bts">
+                <button onclick=myReplace()>Format</button>
+                <button onclick=copyText()>Copiar</button>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div id="output">
+                <span>Resultado:</span>
+                <textarea id="formated" cols="60" rows="30"></textarea>
+
+            </div>
+        </div>
+        <script src="..//JS/FormatTF.js"></script>
 </body>
 
 </html>
